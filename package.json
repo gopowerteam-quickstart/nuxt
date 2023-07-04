@@ -1,0 +1,26 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "update:request": "npx request-generate"
+  },
+  "devDependencies": {
+    "@gopowerteam/request-generate": "^0.1.18",
+    "@nuxt/devtools": "latest",
+    "@nuxtjs/eslint-module": "^4.1.0",
+    "@types/node": "^18",
+    "@unocss/nuxt": "^0.53.4",
+    "eslint": "^8.44.0",
+    "nuxt": "^3.6.1",
+    "unplugin-icons": "^0.16.3",
+    "unplugin-vue-components": "^0.25.1"
+  },
+  "dependencies": {
+    "@arco-design/web-vue": "^2.47.1"
+  }
+}
