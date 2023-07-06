@@ -1,5 +1,3 @@
-<script lang="ts" setup></script>
-
 <template>
   <div>
     Page: foo
@@ -7,3 +5,6 @@
 </template>
 
 <style scoped></style>
+
+<script lang="ts" setup>
+</script>

@@ -1,17 +1,17 @@
-<script lang="ts" setup></script>
-
 <template>
   <ALayout>
     <ALayoutHeader>
-      <LayoutHeader></LayoutHeader>
+      <LayoutHeader />
     </ALayoutHeader>
     <ALayout>
-      <ALayoutSider></ALayoutSider>
-            <ALayoutContent>
-        <slot></slot>
+      <ALayoutSider />
+      <ALayoutContent>
+        <slot />
       </ALayoutContent>
     </ALayout>
   </ALayout>
 </template>
 
 <style scoped></style>
+
+<script lang="ts" setup></script>

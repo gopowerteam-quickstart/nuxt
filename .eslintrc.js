@@ -4,7 +4,7 @@ module.exports = {
     browser: true,
     es2022: true,
   },
-  extends: ['@gopowerteam/eslint-config', './.eslintrc-auto-import.json'],
+  extends: ['@gopowerteam/eslint-config'],
   rules: {
     'vue/valid-template-root': ['off'],
     'vue/one-component-per-file': ['off'],

@@ -1,5 +1,4 @@
-import { defineConfig } from 'unocss'
-import { presetAttributify, presetUno } from 'unocss'
+import { defineConfig, presetAttributify, presetUno } from 'unocss'
 import transformerDirective from '@unocss/transformer-directives'
 
 export default defineConfig({
@@ -30,5 +29,5 @@ export default defineConfig({
   safelist: [
     ...Array.from({ length: 10 }, (_, i) => `space-x-${i + 1}`),
     ...Array.from({ length: 10 }, (_, i) => `space-y-${i + 1}`),
-  ]
+  ],
 })

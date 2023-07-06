@@ -1,32 +1,31 @@
-import { ArcoResolver } from 'unplugin-vue-components/resolvers';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath } from 'node:url'
+import { ArcoResolver } from 'unplugin-vue-components/resolvers'
 import Request from '@gopowerteam/request-generate/vite-plugin'
-import Components from 'unplugin-vue-components/vite';
+import Components from 'unplugin-vue-components/vite'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
   ssr: false,
-  
-  alias:{
+  alias: {
     '~': fileURLToPath(new URL('../src', import.meta.url)),
     '@': fileURLToPath(new URL('../src', import.meta.url)),
   },
   modules: [
     ['unplugin-icons/nuxt', { /* options */ }],
-    ['@nuxtjs/eslint-module', { /* options */ }]
+    ['@nuxtjs/eslint-module', { /* options */ }],
   ],
   eslint: {
-  
+
     /* module options */
   },
-  vite:{
-    plugins:[
+  vite: {
+    plugins: [
       Components({
         resolvers: [
           ArcoResolver({
-            sideEffect: true
-          })
+            sideEffect: true,
+          }),
         ],
         dts: 'types/auto-generated/components.d.ts',
       }),
@@ -34,7 +33,7 @@ export default defineNuxtConfig({
         alias: '~',
         dir: 'src/http',
         dts: 'src/types/request.d.ts',
-      })
-    ]
-  }
+      }),
+    ],
+  },
 })

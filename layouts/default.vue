@@ -1,5 +1,3 @@
-<script lang="ts" setup></script>
-
 <template>
   <div>
     Layout: default
@@ -8,3 +6,5 @@
 </template>
 
 <style scoped></style>
+
+<script lang="ts" setup></script>

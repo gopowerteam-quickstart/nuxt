@@ -10,6 +10,7 @@
     "update:request": "npx request-generate"
   },
   "devDependencies": {
+    "@gopowerteam/eslint-config": "^0.0.7",
     "@gopowerteam/request-generate": "^0.1.18",
     "@nuxt/devtools": "latest",
     "@nuxtjs/eslint-module": "^4.1.0",
