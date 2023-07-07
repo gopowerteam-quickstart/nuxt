@@ -7,4 +7,5 @@
 
 <style scoped></style>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+</script>

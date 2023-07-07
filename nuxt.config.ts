@@ -12,12 +12,29 @@ export default defineNuxtConfig({
     '@': fileURLToPath(new URL('../src', import.meta.url)),
   },
   modules: [
+    ['@unocss/nuxt', { /* options */}],
+    ['@vue-macros/nuxt', { /* options */}],
+    ['@pinia/nuxt', { /* options */}],
     ['unplugin-icons/nuxt', { /* options */ }],
     ['@nuxtjs/eslint-module', { /* options */ }],
   ],
-  eslint: {
-
-    /* module options */
+  macros: {},
+  pinia: {
+    autoImports: [
+      'defineStore',
+    ],
+  },
+  eslint: { /* module options */ },
+  imports: {
+    dirs: [
+      'components',
+      'components/*/index.ts',
+      'components/**',
+      'composables',
+      'composables/*/index.ts',
+      'composables/**',
+      'store',
+    ],
   },
   vite: {
     plugins: [

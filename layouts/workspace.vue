@@ -1,12 +1,16 @@
 <template>
   <ALayout>
     <ALayoutHeader>
-      <LayoutHeader />
+      <Header />
     </ALayoutHeader>
     <ALayout>
-      <ALayoutSider />
+      <ALayoutSider :collapsed="collapsed">
+        <Sider />
+      </ALayoutSider>
       <ALayoutContent>
-        <slot />
+        <Content>
+          <slot />
+        </Content>
       </ALayoutContent>
     </ALayout>
   </ALayout>
@@ -14,4 +18,12 @@
 
 <style scoped></style>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import Header from './components/workspace/header/index.vue'
+import Sider from './components/workspace/sider/index.vue'
+import Content from './components/workspace/content/index.vue'
+
+const collapsed = useState(() => false)
+
+useProvide(({ workspace }) => workspace.collapsed, collapsed)
+</script>
