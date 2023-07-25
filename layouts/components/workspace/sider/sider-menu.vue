@@ -1,14 +1,15 @@
 <template>
-  <AMenu
-    accordion
+  <ElMenu
     auto-open-selected
+    collapse-transition
     :collapsed="collapsed"
+    menu-trigger="click"
     :mode="workspace.menu.mode"
-    show-collapse-button
-    @collapse="(value) => collapsed = value"
+    router
+    unique-opened
   >
     <MenuItem v-for="menu in menus" :key="menu.key" :menu="menu" />
-  </AMenu>
+  </ElMenu>
 </template>
 
 <script setup lang="ts">
@@ -16,7 +17,8 @@ import roots from '@@/config/menu.config'
 import MenuItem from '../menu-item.vue'
 
 const { workspace } = useAppConfig()
-const collapsed = $(useInject(keys => keys.workspace.collapsed))
+const store = useStore()
+const collapsed = computed(() => store.layout.sider.collapsed)
 
 const router = useRouter()
 let menus = $ref<MenuConfig[]>([])
@@ -45,6 +47,5 @@ function generateMenus() {
 
 onMounted(() => {
   generateMenus()
-  console.log(menus)
 })
 </script>

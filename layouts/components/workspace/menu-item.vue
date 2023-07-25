@@ -1,6 +1,6 @@
 <template>
   <template v-if="menu.path">
-    <AMenuItem :key="menu.key">
+    <ElMenuItem :index="menu.path">
       <template
         v-if="props.showIcon && menu.icon"
         #icon
@@ -10,11 +10,11 @@
       <div class="menu-title">
         {{ menu.title }}
       </div>
-    </AMenuItem>
+    </ElMenuItem>
   </template>
 
   <template v-else>
-    <ASubMenu :key="menu.key">
+    <ElSubMenu :index="menu.key">
       <template
         v-if="props.showIcon && menu.icon"
         #icon
@@ -31,7 +31,7 @@
         :key="child.key"
         :menu="child"
       />
-    </ASubMenu>
+    </ElSubMenu>
   </template>
 </template>
 

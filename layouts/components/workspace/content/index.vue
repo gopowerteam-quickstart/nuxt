@@ -1,7 +1,14 @@
 <template>
-  <div>
+  <section :class="$style.host">
     <slot />
-  </div>
+  </section>
 </template>
 
-<script setup lang="ts"></script>
+<style lang="scss" scoped module>
+.host{
+  padding:20px;
+}
+</style>
+
+<script setup lang="ts">
+</script>

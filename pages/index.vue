@@ -9,7 +9,7 @@
 
 <script lang="ts" setup>
 onMounted(() => {
-  console.log('123')
+//
 })
 
 definePageMeta({

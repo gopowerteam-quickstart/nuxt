@@ -1,9 +1,11 @@
 import { defineStore } from 'pinia'
 import useAppStore from './app.store'
 import useUserStore from './user.store'
+import useLayoutStore from './layout.store'
 
 const stores = {
   app: () => useAppStore(),
+  layout: () => useLayoutStore(),
   user: () => useUserStore(),
 }
 
