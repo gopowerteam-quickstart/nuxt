@@ -11,12 +11,14 @@
 onMounted(() => {
 //
 })
+</script>
 
+<script lang="ts">
 definePageMeta({
   layout: 'workspace',
   title: 'as',
   menu: {
-    key: 'root1',
+    key: 'page1',
     title: 'page1',
     parent: 'root1',
   },

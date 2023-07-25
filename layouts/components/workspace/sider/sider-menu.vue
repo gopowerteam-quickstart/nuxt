@@ -8,20 +8,20 @@
     router
     unique-opened
   >
-    <MenuItem v-for="menu in menus" :key="menu.key" :menu="menu" />
+    <MenuItem v-for="menu in roots" :key="menu.key" :menu="menu" />
   </ElMenu>
 </template>
 
 <script setup lang="ts">
-import roots from '@@/config/menu.config'
 import MenuItem from '../menu-item.vue'
+import submenus from '@/config/menu.config'
 
 const { workspace } = useAppConfig()
 const store = useStore()
 const collapsed = computed(() => store.layout.sider.collapsed)
 
 const router = useRouter()
-let menus = $ref<MenuConfig[]>([])
+const roots = $ref<MenuConfig[]>([])
 
 /**
  * 生成菜单
@@ -31,16 +31,28 @@ function generateMenus() {
     ...route.meta.menu,
     path: route.path,
   }) as MenuConfig)
+  const menus = [...(submenus as unknown as MenuConfig[]), ...pages]
 
-  const generateTree = (menu: MenuConfig): MenuConfig => {
-    const children = pages.filter(m => m.parent === menu.key)
-    if (!children.length)
-      return menu
-    else
-      return { ...menu, children }
+  const generateTree = (menu: MenuConfig): MenuConfig | undefined => {
+    const children = menus.filter(m => m.parent === menu.key).map(generateTree).filter(Boolean) as MenuConfig[]
+
+    if (children.length > 0) menu.children = children
+
+    switch (true) {
+      case !menu.parent && (children.length !== 0 || !!menu.path):{
+        roots.push(menu)
+        break
+      }
+      case !!menu.path: {
+        return menu
+      }
+      case !menu.path && children.length !== 0:{
+        return menu
+      }
+    }
   }
 
-  menus = [...(roots as unknown as MenuConfig[]), ...pages]
+  [...(submenus as unknown as MenuConfig[]), ...pages]
     .filter(menu => !menu.parent)
     .map(generateTree)
 }
