@@ -6,6 +6,7 @@
         class="sider-menu"
         :collapse="store.layout.sider.collapsed"
         collapse-transition
+        :default-active="route.path"
         menu-trigger="click"
         :mode="workspace.menu.mode"
         router
@@ -39,6 +40,14 @@
 .sider-menu {
   border-right:none;
 }
+
+.sider-menu.v-leave-active :deep(.el-sub-menu.is-active){
+  .el-menu-item{
+    &::after{
+      background-color: transparent;
+    }
+  }
+}
 </style>
 
 <script setup lang="ts">
@@ -47,8 +56,7 @@ import submenus from '@/config/menu.config'
 
 const { workspace } = useAppConfig()
 const store = useStore()
-const collapsed = computed(() => store.layout.sider.collapsed)
-
+const route = useRoute()
 const router = useRouter()
 const roots = $ref<MenuConfig[]>([])
 

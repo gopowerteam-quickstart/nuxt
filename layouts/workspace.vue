@@ -5,14 +5,12 @@
     </ElHeader>
     <ElContainer>
       <ElAside class="relative" :width="siderWidth">
-        <Sider class="absolute inset-0" />
+        <Sider />
       </ElAside>
       <ElMain class="relative p-0!">
-        <ElScrollbar class="absolute! inset-0" :style="{ backgroundColor: appConfig.workspace.content.background }">
-          <Content class="absolute inset-0">
-            <slot />
-          </Content>
-        </ElScrollbar>
+        <Content>
+          <slot />
+        </Content>
       </ElMain>
     </ElContainer>
   </ElContainer>
