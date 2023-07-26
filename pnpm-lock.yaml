@@ -24,6 +24,9 @@ devDependencies:
   '@gopowerteam/request-generate':
     specifier: ^0.1.18
     version: 0.1.18(openapi-types@12.1.3)
+  '@iconify-json/icon-park-outline':
+    specifier: ^1.1.11
+    version: 1.1.11
   '@nuxt/devtools':
     specifier: latest
     version: 0.7.1(nuxt@3.6.5)(vite@4.3.9)
@@ -36,6 +39,12 @@ devDependencies:
   '@unocss/nuxt':
     specifier: ^0.53.6
     version: 0.53.6(postcss@8.4.24)(vite@4.3.9)(webpack@5.88.1)
+  '@unocss/preset-attributify':
+    specifier: ^0.53.6
+    version: 0.53.6
+  '@unocss/preset-icons':
+    specifier: ^0.53.6
+    version: 0.53.6
   '@unocss/reset':
     specifier: ^0.53.6
     version: 0.53.6
@@ -977,6 +986,12 @@ packages:
 
   /@humanwhocodes/object-schema@1.2.1:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
+
+  /@iconify-json/icon-park-outline@1.1.11:
+    resolution: {integrity: sha512-hfevr1UUsw3d0STNgD6b0wUex6N99tE7URxN9bBbi+HJBzGOcN4gQt6GTKuapliAWoyZbnAqUtRdhIvgZ7epUA==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: true
 
   /@iconify/types@2.0.0:
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}

@@ -1,16 +1,20 @@
 <template>
-  <ElMenu
-    auto-open-selected
-    class="sider-menu"
-    collapse-transition
-    :collapsed="collapsed"
-    menu-trigger="click"
-    :mode="workspace.menu.mode"
-    router
-    unique-opened
-  >
-    <MenuItem v-for="menu in roots" :key="menu.key" :menu="menu" />
-  </ElMenu>
+  <section>
+    <ElScrollbar class="absolute! inset-0" :style="{ backgroundColor: workspace.sider.background }">
+      <ElMenu
+        auto-open-selected
+        class="sider-menu"
+        :collapse="store.layout.sider.collapsed"
+        collapse-transition
+        menu-trigger="click"
+        :mode="workspace.menu.mode"
+        router
+        unique-opened
+      >
+        <MenuItem v-for="menu in roots" :key="menu.key" :menu="menu" />
+      </ElMenu>
+    </ElScrollbar>
+  </section>
 </template>
 
 <style scoped lang="scss">
@@ -30,6 +34,10 @@
   .el-sub-menu__title{
     color: var(--el-color-primary);
   }
+}
+
+.sider-menu {
+  border-right:none;
 }
 </style>
 

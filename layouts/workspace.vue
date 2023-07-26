@@ -5,13 +5,11 @@
     </ElHeader>
     <ElContainer>
       <ElAside class="relative" :width="siderWidth">
-        <ElScrollbar class="absolute! inset-0" :style="{ backgroundColor: appConfig.workspace.sider.background }">
-          <Sider />
-        </ElScrollbar>
+        <Sider class="absolute inset-0" />
       </ElAside>
       <ElMain class="relative p-0!">
         <ElScrollbar class="absolute! inset-0" :style="{ backgroundColor: appConfig.workspace.content.background }">
-          <Content>
+          <Content class="absolute inset-0">
             <slot />
           </Content>
         </ElScrollbar>
@@ -27,6 +25,10 @@
   display: flex;
   flex-direction: column;
   position: relative;
+}
+
+.workspace:deep(.el-aside){
+  transition: all 0.3s;
 }
 </style>
 

@@ -14,5 +14,6 @@ onMounted(() => {
 definePageMeta({
   layout: 'workspace',
   title: 'page2',
+  icon: 'icon',
 })
 </script>

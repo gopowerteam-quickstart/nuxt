@@ -1,30 +1,20 @@
 <template>
   <template v-if="menu.path">
     <ElMenuItem :index="menu.path">
-      <template
-        v-if="props.showIcon && menu.icon"
-        #icon
-      >
-        icon
-      </template>
-      <div class="menu-title">
+      <img v-if="menu.icon" :src="menu.icon">
+      <span class="menu-title pl-2">
         {{ menu.title }}
-      </div>
+      </span>
     </ElMenuItem>
   </template>
 
   <template v-else>
     <ElSubMenu :index="menu.key">
-      <template
-        v-if="props.showIcon && menu.icon"
-        #icon
-      >
-        icon
-      </template>
       <template #title>
-        <div class="submenu-title">
+        <img v-if="menu.icon" :src="menu.icon">
+        <span class="submenu-title pl-2">
           {{ menu.title }}
-        </div>
+        </span>
       </template>
       <MenuItem
         v-for="child in menu.children"
@@ -38,8 +28,7 @@
 <script setup lang="ts">
 import MenuItem from './menu-item.vue'
 
-const props = defineProps<{
+defineProps<{
   menu: MenuConfig
-  showIcon?: boolean
 }>()
 </script>

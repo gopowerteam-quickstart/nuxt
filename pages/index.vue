@@ -8,6 +8,8 @@
 <style scoped></style>
 
 <script lang="ts" setup>
+import Icon from '@/assets/icons/icon.svg'
+
 onMounted(() => {
 //
 })
@@ -19,6 +21,7 @@ definePageMeta({
     key: 'dashboard',
     title: 'dashboard',
     index: 1,
+    icon: Icon,
   },
 })
 </script>

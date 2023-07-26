@@ -9,7 +9,7 @@ export default defineAppConfig({
     },
     sider: {
       width: 200,
-      collapsedWidth: 80,
+      collapsedWidth: 65,
       background: '#fff',
     },
     content: {

@@ -1,5 +1,7 @@
-import { defineConfig, presetAttributify, presetUno } from 'unocss'
+import { defineConfig, presetUno } from 'unocss'
 import transformerDirective from '@unocss/transformer-directives'
+import presetIcons from '@unocss/preset-icons'
+import presetAttributify from '@unocss/preset-attributify'
 
 export default defineConfig({
   presets: [
@@ -9,6 +11,8 @@ export default defineConfig({
       prefixedOnly: true,
       nonValuedAttribute: true,
     }),
+    presetIcons({ /* options */ }),
+
   ],
   transformers: [transformerDirective()],
   theme: {

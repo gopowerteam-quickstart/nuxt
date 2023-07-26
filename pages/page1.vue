@@ -7,6 +7,8 @@
 </style>
 
 <script setup lang="ts">
+import Icon from '@/assets/icons/icon.svg'
+
 onMounted(() => {
   // console.log('123123')
 })
@@ -18,6 +20,7 @@ definePageMeta({
     key: 'page1',
     title: 'page1',
     parent: 'root1',
+    icon: Icon,
   },
 })
 </script>
