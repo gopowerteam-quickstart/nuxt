@@ -1,9 +1,19 @@
 <template>
   <section>
-    <ElScrollbar class="absolute! inset-0" :style="{ backgroundColor: workspace.content.background }">
-      <div class="p-[20px]">
+    <ElScrollbar
+      class="absolute! inset-0"
+      :style="{ backgroundColor: workspace.content.background }"
+      :view-style="{ minHeight: '100%', display: 'flex', flexDirection: 'column' }"
+    >
+      <ElHeader height="auto">
+        <ContentHeader />
+      </ElHeader>
+      <ElMain class="px-[20px] flex-auto">
         <slot />
-      </div>
+      </ElMain>
+      <ElFooter height="auto">
+        <ContentFooter />
+      </ElFooter>
     </ElScrollbar>
   </section>
 </template>
@@ -15,5 +25,8 @@
 </style>
 
 <script setup lang="ts">
+import ContentHeader from './content-header.vue'
+import ContentFooter from './content-footer.vue'
+
 const { workspace } = useAppConfig()
 </script>

@@ -7,11 +7,11 @@
       <ElAside class="relative" :width="siderWidth">
         <Sider />
       </ElAside>
-      <ElMain class="relative p-0!">
+      <ElContainer class="relative p-0!">
         <Content>
           <slot />
         </Content>
-      </ElMain>
+      </ElContainer>
     </ElContainer>
   </ElContainer>
 </template>

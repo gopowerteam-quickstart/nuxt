@@ -18,18 +18,16 @@ export default defineNuxtConfig({
     ['@vue-macros/nuxt', { /* options */}],
     ['@pinia/nuxt', { /* options */}],
     ['unplugin-icons/nuxt', { /* options */ }],
-    // ['@nuxtjs/eslint-module', { /* options */ }],
     ['@element-plus/nuxt', { /* options */ }],
 
   ],
-  elementPlus: { /** Options */ },
+  elementPlus: { importStyle: 'scss' },
   macros: {},
   pinia: {
     autoImports: [
       'defineStore',
     ],
   },
-  // eslint: { /* module options */ },
   imports: {
     dirs: [
       'components',
