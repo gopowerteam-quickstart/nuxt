@@ -15,6 +15,7 @@ onMounted(() => {
 definePageMeta({
   layout: 'workspace',
   title: 'dashboard',
+  breadcrumb: false,
   menu: {
     key: 'dashboard',
     title: 'dashboard',

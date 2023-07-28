@@ -5,6 +5,9 @@ import Request from '@gopowerteam/request-generate/vite-plugin'
 export default defineNuxtConfig({
   devtools: { enabled: true },
   ssr: true,
+  routeRules: {
+    '/': { redirect: '/dashboard' },
+  },
   alias: {
     '~': fileURLToPath(new URL('./', import.meta.url)),
     '@': fileURLToPath(new URL('./', import.meta.url)),
@@ -13,21 +16,6 @@ export default defineNuxtConfig({
     '@unocss/reset/normalize.css',
     '@/styles/index.scss',
   ],
-  modules: [
-    ['nuxt-icons', { /* module options */ }],
-    ['@unocss/nuxt', { /* options */}],
-    ['@vue-macros/nuxt', { /* options */}],
-    ['@pinia/nuxt', { /* options */}],
-    ['@element-plus/nuxt', { /* options */ }],
-
-  ],
-  elementPlus: { importStyle: 'scss' },
-  macros: {},
-  pinia: {
-    autoImports: [
-      'defineStore',
-    ],
-  },
   imports: {
     dirs: [
       'components',
@@ -46,6 +34,21 @@ export default defineNuxtConfig({
         dir: 'src/http',
         dts: 'src/types/request.d.ts',
       }),
+    ],
+  },
+  modules: [
+    ['nuxt-icons', { /* module options */ }],
+    ['@unocss/nuxt', { /* options */}],
+    ['@vue-macros/nuxt', { /* options */}],
+    ['@pinia/nuxt', { /* options */}],
+    ['@pinia-plugin-persistedstate/nuxt', { /* options */ }],
+    ['@element-plus/nuxt', { /* options */ }],
+  ],
+  elementPlus: { importStyle: 'scss' },
+  macros: {},
+  pinia: {
+    autoImports: [
+      'defineStore',
     ],
   },
 })

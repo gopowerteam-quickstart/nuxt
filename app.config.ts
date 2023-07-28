@@ -13,6 +13,8 @@ export default defineAppConfig({
       background: '#fff',
     },
     content: {
+      background: '#f5f7f9',
+      padding: 20,
       header: {
         height: 40,
         size: 12,
@@ -22,7 +24,6 @@ export default defineAppConfig({
         size: 12,
         text: 'Nuxt Admin ©2023 Created by zhuchentong',
       },
-      background: '#f5f7f9',
     },
     menu: {
       mode: 'vertical',

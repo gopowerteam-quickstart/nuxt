@@ -1,5 +1,5 @@
 <template>
-  <section class="flex-center" :class="$style.host">
+  <section class="flex-center select-none" :class="$style.host">
     {{ workspace.content.footer.text }}
   </section>
 </template>

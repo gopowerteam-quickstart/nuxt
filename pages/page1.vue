@@ -1,5 +1,7 @@
 <template>
-  <div />
+  <div>
+    page1
+  </div>
 </template>
 
 <style lang="ts" scoped>

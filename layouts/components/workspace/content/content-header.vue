@@ -1,6 +1,6 @@
 <template>
-  <section v-if="breadcrumbs.length" class="flex items-center" :class="$style.host">
-    <ElBreadcrumb class="breadcrumb" separator="/">
+  <section class="flex items-center select-none" :class="$style.host">
+    <ElBreadcrumb v-if="breadcrumbs.length && route.meta.breadcrumb !== false" class="breadcrumb" separator="/">
       <ElBreadcrumbItem>
         <div class="i-icon-park-outline:all-application" />
       </ElBreadcrumbItem>
@@ -13,7 +13,7 @@
 
 <style scoped module>
 .host{
-  height: v-bind(`${workspace.content.header.height}px`);
+  height: v-bind(`${route.meta?.breadcrumb === false ? workspace.content.padding : workspace.content.header.height}px`);
   font-size: v-bind(`${workspace.content.header.size}px`);
   color: var(--el-text-color-primary);
 }

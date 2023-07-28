@@ -1,5 +1,5 @@
 <template>
-  <section class="absolute inset-0 flex flex-col">
+  <section class="absolute inset-0 flex flex-col select-none">
     <SideMenu class="flex-auto relative" />
     <SideActions />
   </section>

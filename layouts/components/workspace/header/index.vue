@@ -1,5 +1,5 @@
 <template>
-  <section class="justify-between" :class="$style.host">
+  <section class="justify-between select-none" :class="$style.host">
     <HeaderTitle />
     <HeaderActions />
   </section>

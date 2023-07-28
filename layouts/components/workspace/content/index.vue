@@ -8,7 +8,7 @@
       <ElHeader height="auto">
         <ContentHeader />
       </ElHeader>
-      <ElMain class="mian-container flex-auto" style="--el-main-padding:0 20px;">
+      <ElMain class="mian-container flex-auto" :style="`--el-main-padding:0 ${workspace.content.padding}px;`">
         <slot />
       </ElMain>
       <ElFooter height="auto">
