@@ -11,13 +11,13 @@ export default defineNuxtConfig({
   },
   css: [
     '@unocss/reset/normalize.css',
-    '@@/styles/index.scss',
+    '@/styles/index.scss',
   ],
   modules: [
+    ['nuxt-icons', { /* module options */ }],
     ['@unocss/nuxt', { /* options */}],
     ['@vue-macros/nuxt', { /* options */}],
     ['@pinia/nuxt', { /* options */}],
-    ['unplugin-icons/nuxt', { /* options */ }],
     ['@element-plus/nuxt', { /* options */ }],
 
   ],

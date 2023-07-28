@@ -1,7 +1,9 @@
 <template>
   <template v-if="menu.path">
     <ElMenuItem :index="menu.path">
-      <img v-if="menu.icon" :src="menu.icon">
+      <div>
+        <nuxt-icon v-if="menu.icon" class="text-[20px]" :name="menu.icon" />
+      </div>
       <span class="menu-title pl-2">
         {{ menu.title }}
       </span>
@@ -11,7 +13,9 @@
   <template v-else>
     <ElSubMenu :index="menu.key">
       <template #title>
-        <img v-if="menu.icon" :src="menu.icon">
+        <div>
+          <nuxt-icon v-if="menu.icon" class="text-[20px]" :name="menu.icon" />
+        </div>
         <span class="submenu-title pl-2">
           {{ menu.title }}
         </span>

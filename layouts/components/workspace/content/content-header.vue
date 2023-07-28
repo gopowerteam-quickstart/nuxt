@@ -22,7 +22,7 @@
 <style scoped lang="scss">
 .breadcrumb :deep(.active){
     .el-breadcrumb__inner{
-      color: var(--el-text-color-primary);
+      font-weight: bold;
     }
   }
 </style>

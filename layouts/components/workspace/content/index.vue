@@ -8,7 +8,7 @@
       <ElHeader height="auto">
         <ContentHeader />
       </ElHeader>
-      <ElMain class="px-[20px] flex-auto">
+      <ElMain class="mian-container flex-auto" style="--el-main-padding:0 20px;">
         <slot />
       </ElMain>
       <ElFooter height="auto">
