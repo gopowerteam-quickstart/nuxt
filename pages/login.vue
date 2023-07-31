@@ -1,6 +1,6 @@
 <template>
   <div class="absolute inset-0 flex login-page">
-    <div class="flex-1 desktop:block mobile:hidden" />
+    <div v-if="$viewport.match('desktop')" class="flex-1" />
     <div class="flex-1 flex-center">
       <div class="login-card desktop:w-[400px] mobile:w-[80%] space-y-10">
         <div class="space-y-2">

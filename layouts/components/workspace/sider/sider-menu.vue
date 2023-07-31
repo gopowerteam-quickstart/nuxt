@@ -10,7 +10,7 @@
         menu-trigger="click"
         :mode="workspace.menu.mode"
         router
-        unique-opened
+        :unique-opened="$viewport.match('desktop')"
       >
         <MenuItem v-for="menu in roots" :key="menu.key" :menu="menu" />
       </ElMenu>

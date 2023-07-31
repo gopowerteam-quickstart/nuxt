@@ -1,5 +1,10 @@
 <template>
-  <section class="space-x-2">
+  <section class="px-[10px]">
+    <div class="action-item">
+      <ElButton v-if="$viewport.match('mobile')" link @click="onCollapseMenu">
+        <div class="i-icon-park-outline:hamburger-button text-2xl" />
+      </ElButton>
+    </div>
     <div class="action-item">
       <ElDropdown @command="onCommand">
         <div class="flex items-center space-x-2">
@@ -30,8 +35,8 @@
 <style lang="scss" scoped>
 .action-item  {
   height: 100%;
-  padding: 0 20px;
   display: flex;
+  padding: 0 10px;
   justify-content: center;
   align-items: center;
 }
@@ -45,7 +50,9 @@ function onExit() {
   store.user.logout()
   location.replace('/')
 }
-
+function onCollapseMenu() {
+  store.layout.toggleDrawerCollapsed()
+}
 function onCommand(command: string) {
   switch (command) {
     case 'exit':

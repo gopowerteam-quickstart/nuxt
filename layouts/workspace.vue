@@ -3,10 +3,27 @@
     <ElHeader class="relative" :height="`${appConfig.workspace.header.height}px`">
       <Header />
     </ElHeader>
-    <ElContainer>
-      <ElAside class="relative" :width="siderWidth">
-        <Sider />
-      </ElAside>
+    <ElContainer id="layout-container">
+      <template v-if="$viewport.match('desktop')">
+        <ElAside class="relative" :width="siderWidth">
+          <Sider />
+        </ElAside>
+      </template>
+      <template v-else>
+        <ElDrawer
+          v-model="store.layout.drawer.collapsed"
+          :append-to-body="false"
+          direction="ttb"
+          modal
+          modal-class="menu-drawer"
+          :with-header="false"
+        >
+          <ElAside :width="siderWidth">
+            <Sider />
+          </ElAside>
+        </ElDrawer>
+      </template>
+
       <ElContainer class="relative p-0!">
         <Content>
           <slot />
@@ -27,6 +44,10 @@
 
 .workspace:deep(.el-aside){
   transition: all 0.3s;
+}
+
+.workspace:deep(.menu-drawer){
+  top: v-bind(`${appConfig.workspace.header.height}px`);
 }
 </style>
 

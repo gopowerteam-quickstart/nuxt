@@ -51,4 +51,15 @@ export default defineNuxtConfig({
       'defineStore',
     ],
   },
+  viewport: {
+    breakpoints: {
+      mobile: 320,
+      desktop: 1024,
+    },
+    defaultBreakpoints: {
+      desktop: 'desktop',
+      mobile: 'mobile',
+    },
+    fallbackBreakpoint: 'desktop',
+  },
 })
