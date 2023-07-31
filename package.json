@@ -20,10 +20,12 @@
     "@unocss/preset-attributify": "^0.53.6",
     "@unocss/preset-icons": "^0.53.6",
     "@unocss/reset": "^0.53.6",
+    "dayjs-nuxt": "^1.1.2",
     "element-plus": "^2.3.8",
     "eslint": "^8.45.0",
     "nuxt": "^3.6.5",
     "nuxt-icons": "^3.2.1",
+    "nuxt-viewport": "^2.0.6",
     "sass": "^1.64.1"
   },
   "dependencies": {

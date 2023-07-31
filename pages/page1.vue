@@ -22,5 +22,8 @@ definePageMeta({
     parent: 'root1',
     icon: 'icon',
   },
+  requireRoles: [
+    UserRole.Test,
+  ],
 })
 </script>

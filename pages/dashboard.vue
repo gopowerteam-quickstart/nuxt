@@ -22,5 +22,6 @@ definePageMeta({
     index: 1,
     icon: 'icon',
   },
+  requireAuth: true,
 })
 </script>

@@ -48,6 +48,9 @@ devDependencies:
   '@unocss/reset':
     specifier: ^0.53.6
     version: 0.53.6
+  dayjs-nuxt:
+    specifier: ^1.1.2
+    version: 1.1.2
   element-plus:
     specifier: ^2.3.8
     version: 2.3.8(vue@3.3.4)
@@ -60,6 +63,9 @@ devDependencies:
   nuxt-icons:
     specifier: ^3.2.1
     version: 3.2.1
+  nuxt-viewport:
+    specifier: ^2.0.6
+    version: 2.0.6(vue@3.3.4)
   sass:
     specifier: ^1.64.1
     version: 1.64.1
@@ -3634,6 +3640,16 @@ packages:
     resolution: {integrity: sha512-0R9ikRb668HB7QDxT1vkpuUBtqc53YyAwMwGeUFKRojY/NWKvdZ+9UYtRfGmhqNbRkTSVpMbmyhXipFFv2cb/A==}
     engines: {node: '>= 12'}
 
+  /dayjs-nuxt@1.1.2:
+    resolution: {integrity: sha512-hYcAS7MLkfqU6lrUV12HUtckFE8OkqtIKIaII31zCTg+tH63DOy8yHat/TgkepgbjSmvYHH/uzXtub8oKYU5Gg==}
+    dependencies:
+      '@nuxt/kit': 3.6.5
+      dayjs: 1.11.9
+    transitivePeerDependencies:
+      - rollup
+      - supports-color
+    dev: true
+
   /dayjs@1.11.9:
     resolution: {integrity: sha512-QvzAURSbQ0pKdIye2txOzNaHmxtUBXerpY0FJsFXUMKbIZeFm5ht1LS/jFsrncjnmtv8HsG0W2g6c0zUjZWmpA==}
     dev: true
@@ -6434,6 +6450,19 @@ packages:
       - supports-color
     dev: true
 
+  /nuxt-viewport@2.0.6(vue@3.3.4):
+    resolution: {integrity: sha512-U1V8RSLLbOzNkIWWmj9+sff7Txv6sVxifhnSW/6k9iaRwBeMp7+EyYBHbYzVd637lAIQqJ/8Ja9SZRvnbvATGQ==}
+    dependencies:
+      '@nuxt/kit': 3.6.5
+      ua-parser-js: 1.0.35
+      vue-demi: 0.14.5(vue@3.3.4)
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - rollup
+      - supports-color
+      - vue
+    dev: true
+
   /nuxt@3.6.5(@types/node@18.16.19)(eslint@8.45.0)(sass@1.64.1)(typescript@5.1.6):
     resolution: {integrity: sha512-0A7V8B1HrIXX9IlqPc2w+5ZPXi+7MYa9QVhtuGYuLvjRKoSFANhCoMPRP6pKdoxigM1MBxhLue2VmHA/VbtJCw==}
     engines: {node: ^14.18.0 || >=16.10.0}
@@ -8101,6 +8130,10 @@ packages:
     resolution: {integrity: sha512-zaWCozRZ6DLEWAWFrVDz1H6FVXzUSfTy5FUMWsQlU8Ym5JP9eO4xkTIROFCQvhQf61z6O/G6ugw3SgAnvvm+HA==}
     engines: {node: '>=14.17'}
     hasBin: true
+
+  /ua-parser-js@1.0.35:
+    resolution: {integrity: sha512-fKnGuqmTBnIE+/KXSzCn4db8RTigUzw1AN0DmdU6hJovUTbYJKyqj+8Mt1c4VfRDnOVJnENmfYkIPZ946UrSAA==}
+    dev: true
 
   /ufo@1.1.2:
     resolution: {integrity: sha512-TrY6DsjTQQgyS3E3dBaOXf0TpPD8u9FVrVYmKVegJuFw51n/YB9XPt+U6ydzFG5ZIN7+DIjPbNmXoBj9esYhgQ==}

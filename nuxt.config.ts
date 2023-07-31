@@ -4,10 +4,7 @@ import Request from '@gopowerteam/request-generate/vite-plugin'
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  ssr: true,
-  routeRules: {
-    '/': { redirect: '/dashboard' },
-  },
+  ssr: false,
   alias: {
     '~': fileURLToPath(new URL('./', import.meta.url)),
     '@': fileURLToPath(new URL('./', import.meta.url)),
@@ -18,6 +15,7 @@ export default defineNuxtConfig({
   ],
   imports: {
     dirs: [
+      'config',
       'components',
       'components/*/index.ts',
       'components/**',
@@ -37,12 +35,14 @@ export default defineNuxtConfig({
     ],
   },
   modules: [
-    ['nuxt-icons', { /* module options */ }],
-    ['@unocss/nuxt', { /* options */}],
-    ['@vue-macros/nuxt', { /* options */}],
-    ['@pinia/nuxt', { /* options */}],
-    ['@pinia-plugin-persistedstate/nuxt', { /* options */ }],
-    ['@element-plus/nuxt', { /* options */ }],
+    ['nuxt-icons', {}],
+    ['@unocss/nuxt', {}],
+    ['@vue-macros/nuxt', {}],
+    ['@pinia/nuxt', {}],
+    ['@pinia-plugin-persistedstate/nuxt', {}],
+    ['@element-plus/nuxt', {}],
+    ['dayjs-nuxt', {}],
+    ['nuxt-viewport', {}],
   ],
   elementPlus: { importStyle: 'scss' },
   macros: {},

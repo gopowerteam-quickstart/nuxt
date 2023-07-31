@@ -1,7 +1,7 @@
 <template>
   <section class="space-x-2">
     <div class="action-item">
-      <ElDropdown>
+      <ElDropdown @command="onCommand">
         <div class="flex items-center space-x-2">
           <ElAvatar size="small" />
           <div>user</div>
@@ -11,7 +11,7 @@
             <ElDropdownItem>menu1</ElDropdownItem>
             <ElDropdownItem>menu2</ElDropdownItem>
             <ElDropdownItem>menu3</ElDropdownItem>
-            <ElDropdownItem divided>
+            <ElDropdownItem command="exit" divided>
               退出
             </ElDropdownItem>
           </ElDropdownMenu>
@@ -38,5 +38,19 @@
 </style>
 
 <script setup lang="ts">
+const store = useStore()
 const appConfig = useAppConfig()
+
+function onExit() {
+  store.user.logout()
+  location.replace('/')
+}
+
+function onCommand(command: string) {
+  switch (command) {
+    case 'exit':
+      onExit()
+      break
+  }
+}
 </script>

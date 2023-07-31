@@ -25,8 +25,10 @@ export default defineConfig({
       md: '768px',
       lg: '1024px',
       xl: '1280px',
+      // custom
       mobile: '320px',
-      desktop: '768px',
+      tablet: '768px',
+      desktop: '1024px',
     },
   },
   shortcuts: [['flex-center', 'flex justify-center items-center']],
