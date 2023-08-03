@@ -17,5 +17,11 @@ definePageMeta({
   layout: 'workspace',
   title: 'page2',
   icon: 'icon',
+  menu: {
+    key: 'page2',
+    title: 'page2',
+    parent: 'root1',
+    icon: 'icon',
+  },
 })
 </script>

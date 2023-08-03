@@ -1,53 +1,23 @@
 <template>
   <section>
-    <ElScrollbar class="absolute! inset-0" :style="{ backgroundColor: workspace.sider.background }">
-      <ElMenu
-        auto-open-selected
-        class="sider-menu"
-        :collapse="store.layout.sider.collapsed"
-        collapse-transition
-        :default-active="route.path"
-        menu-trigger="click"
-        :mode="workspace.menu.mode"
-        router
-        :unique-opened="$viewport.match('desktop')"
-      >
-        <MenuItem v-for="menu in roots" :key="menu.key" :menu="menu" />
-      </ElMenu>
-    </ElScrollbar>
+    <AMenu
+      v-model:collapsed="store.layout.sider.collapsed"
+      :accordion="$viewport.match('desktop')"
+      auto-open
+      class="absolute! inset-0 sider-menu"
+      :collapsed-width="workspace.sider.collapsedWidth"
+      :default-selected-keys="[$route.path]"
+      :mode="workspace.menu.mode"
+      router
+      :show-collapse-button="$viewport.match('desktop')"
+      @menu-item-click="onMenuSelect"
+    >
+      <MenuItem v-for="menu in roots" :key="menu.key" :menu="menu" />
+    </AMenu>
   </section>
 </template>
 
 <style scoped lang="scss">
-.sider-menu :deep(.el-menu-item.is-active){
-  &:after {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 4px;
-    height: 100%;
-    background-color: var(--el-color-primary);
-    content: '';
-  }
-}
-
-.sider-menu :deep(.el-sub-menu.is-active){
-  .el-sub-menu__title{
-    color: var(--el-color-primary);
-  }
-}
-
-.sider-menu {
-  border-right:none;
-}
-
-.sider-menu.v-leave-active :deep(.el-sub-menu.is-active){
-  .el-menu-item{
-    &::after{
-      background-color: transparent;
-    }
-  }
-}
 </style>
 
 <script setup lang="ts">
@@ -56,7 +26,6 @@ import submenus from '@/config/menu.config'
 
 const { workspace } = useAppConfig()
 const store = useStore()
-const route = useRoute()
 const router = useRouter()
 const roots = $ref<MenuConfig[]>([])
 
@@ -103,6 +72,13 @@ function generateMenus() {
   menus
     .filter(menu => !menu.parent)
     .map(generateTree)
+}
+
+function onMenuSelect(path: string) {
+  navigateTo(path)
+
+  if (store.layout.drawer.collapsed)
+    store.layout.toggleDrawerCollapsed()
 }
 
 onMounted(() => {

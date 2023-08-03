@@ -1,9 +1,9 @@
 :root{
-  --text-color-primary: var(--el-text-color-primary);
-  --text-color-regular: var(--el-text-color-regular);
-  --text-color-secondary: var(--el-text-color-secondary);
-  --text-color-placeholder: var(--el-text-color-placeholder);
-  --text-color-disabled: var(--el-text-color-disabled);
+  --text-color-primary: var(--color-text-1);
+  --text-color-regular: var(--color-text-1);
+  --text-color-secondary: var(--color-text-2);
+  --text-color-placeholder: var(--color-text-3);
+  --text-color-disabled: var(--color-text-4);
 
-  --bg-color: var(--el-bg-color);
+  --bg-color: var(--color-bg-1);
 }

@@ -10,23 +10,30 @@
           </div>
           <div class="text-sm flex items-center space-x-1">
             <span>没有帐号?</span>
-            <ElLink style="--el-link-font-size: 0.875rem;" type="primary">
+            <ALink style="font-size: 0.875rem;" type="primary">
               注册一个
-            </ElLink>
+            </ALink>
           </div>
         </div>
 
         <div class="login-form">
-          <ElForm ref="loginFormRef" :model="loginModel" :rules="loginRules">
-            <ElFormItem prop="username">
-              <ElInput v-model="loginModel.username" placeholder="请输入用户名" size="large">
+          <AForm
+            auto-label-width
+            :label-col-props="{ span: 0 }"
+
+            :model="loginModel"
+            :rules="loginRules"
+            @submit-success="onLogin"
+          >
+            <AFormItem prop="username">
+              <AInput v-model="loginModel.username" placeholder="请输入用户名" size="large">
                 <template #prepend>
                   用户名
                 </template>
-              </ElInput>
-            </ElFormItem>
-            <ElFormItem prop="password">
-              <ElInput
+              </AInput>
+            </AFormItem>
+            <AFormItem prop="password">
+              <AInput
                 v-model="loginModel.password"
                 placeholder="请输入密码"
                 size="large"
@@ -35,19 +42,19 @@
                 <template #prepend>
                   密码
                 </template>
-              </ElInput>
-            </ElFormItem>
-            <ElFormItem>
-              <ElButton
-                class="w-full"
+              </AInput>
+            </AFormItem>
+            <AFormItem>
+              <AButton
+                html-type="submit"
+                long
                 size="large"
                 type="primary"
-                @click="onSubmit"
               >
                 登录
-              </ElButton>
-            </ElFormItem>
-          </ElForm>
+              </AButton>
+            </AFormItem>
+          </AForm>
         </div>
       </div>
     </div>
@@ -66,12 +73,12 @@
   border-radius: 10px;
 
 }
-.login-form :deep(.el-input-group__prepend){
-  background-color: var(--bg-color);
+.login-form :deep(.arco-input-prepend){
   color:var(--text-color-primary);
-  min-width: 3em;
+  min-width: 5em;
   font-size: 0.8rem;
   font-weight: bolder;
+  justify-content: flex-end;
 }
 
 .background{
@@ -117,54 +124,42 @@
 </style>
 
 <script setup lang="ts">
-import type { FormInstance, FormRules } from 'element-plus'
+import type { FieldRule } from '@arco-design/web-vue'
 
 const store = useStore()
-const router = useRouter()
-const loginFormRef = $ref<FormInstance>()
 const loginModel = $ref({
   username: '',
   password: '',
 })
 
-const loginRules: FormRules = {
+const loginRules: Record<string, FieldRule[]> = {
   username: [
     {
       required: true,
       message: '请输入用户名',
-      trigger: 'blur',
     },
     {
       min: 4,
       max: 12,
       message: '用户名格式错误',
-      trigger: 'blur',
     }],
   password: [
     {
       required: true,
       message: '请输入密码',
-      trigger: 'blur',
     },
     {
       min: 6,
       max: 12,
       message: '密码格式错误',
-      trigger: 'blur',
     }],
 }
 
-function onSubmit() {
-  if (!loginFormRef) return
-
-  loginFormRef?.validate((valid) => {
-    if (valid) {
-      store.user.updateToken(Math.random().toString(32).slice(2))
-      store.user.updateUser({
-        roles: ['ADMIN'],
-      })
-      location.replace('/')
-    }
+function onLogin() {
+  store.user.updateToken(Math.random().toString(32).slice(2))
+  store.user.updateUser({
+    roles: ['ADMIN'],
   })
+  location.replace('/')
 }
 </script>

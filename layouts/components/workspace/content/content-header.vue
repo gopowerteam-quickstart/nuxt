@@ -1,30 +1,26 @@
 <template>
   <section class="flex items-center select-none" :class="$style.host">
-    <ElBreadcrumb v-if="breadcrumbs.length && route.meta.breadcrumb !== false" class="breadcrumb" separator="/">
-      <ElBreadcrumbItem>
+    <ABreadcrumb v-if="breadcrumbs.length && route.meta.breadcrumb !== false" class="breadcrumb" separator="/">
+      <ABreadcrumbItem>
         <div class="i-icon-park-outline:all-application" />
-      </ElBreadcrumbItem>
-      <ElBreadcrumbItem v-for="(item, index) in breadcrumbs" :key="index" :class="{ active: index === breadcrumbs.length - 1 }">
+      </ABreadcrumbItem>
+      <ABreadcrumbItem v-for="(item, index) in breadcrumbs" :key="index" :class="{ active: index === breadcrumbs.length - 1 }">
         {{ item }}
-      </ElBreadcrumbItem>
-    </ElBreadcrumb>
+      </ABreadcrumbItem>
+    </ABreadcrumb>
   </section>
 </template>
 
 <style scoped module>
 .host{
+  padding-left: v-bind(`${workspace.content.padding / 2}px`);
   height: v-bind(`${route.meta?.breadcrumb === false ? workspace.content.padding : workspace.content.header.height}px`);
   font-size: v-bind(`${workspace.content.header.size}px`);
-  color: var(--el-text-color-primary);
+  color: var(--text-color-primary);
 }
 </style>
 
 <style scoped lang="scss">
-.breadcrumb :deep(.active){
-    .el-breadcrumb__inner{
-      font-weight: bold;
-    }
-  }
 </style>
 
 <script setup lang="ts">

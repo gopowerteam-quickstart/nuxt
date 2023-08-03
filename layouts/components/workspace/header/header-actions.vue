@@ -1,27 +1,26 @@
 <template>
   <section class="px-[10px]">
-    <div class="action-item">
-      <ElButton v-if="$viewport.match('mobile')" link @click="onCollapseMenu">
+    <div>
+      <AButton v-if="$viewport.match('mobile')" type="text" @click="onCollapseMenu">
         <div class="i-icon-park-outline:hamburger-button text-2xl" />
-      </ElButton>
+      </AButton>
     </div>
     <div class="action-item">
-      <ElDropdown @command="onCommand">
+      <ADropdown @select="onCommand">
         <div class="flex items-center space-x-2">
-          <ElAvatar size="small" />
+          <AAvatar :size="30" />
           <div>user</div>
         </div>
-        <template #dropdown>
-          <ElDropdownMenu>
-            <ElDropdownItem>menu1</ElDropdownItem>
-            <ElDropdownItem>menu2</ElDropdownItem>
-            <ElDropdownItem>menu3</ElDropdownItem>
-            <ElDropdownItem command="exit" divided>
-              退出
-            </ElDropdownItem>
-          </ElDropdownMenu>
+        <template #content>
+          <ADoption>menu1</ADoption>
+          <ADoption>menu2</ADoption>
+          <ADoption>menu3</ADoption>
+          <ADivider :margin="5" />
+          <ADoption value="exit">
+            退出
+          </ADoption>
         </template>
-      </ElDropdown>
+      </ADropdown>
     </div>
   </section>
 </template>
@@ -53,7 +52,7 @@ function onExit() {
 function onCollapseMenu() {
   store.layout.toggleDrawerCollapsed()
 }
-function onCommand(command: string) {
+function onCommand(command: string | number | Record<string, any> | undefined) {
   switch (command) {
     case 'exit':
       onExit()

@@ -1,21 +1,21 @@
 <template>
   <template v-if="menu.path">
-    <ElMenuItem :index="menu.path">
-      <div>
-        <nuxt-icon v-if="menu.icon" class="text-[20px]" :name="menu.icon" />
-      </div>
+    <AMenuItem :key="menu.path">
+      <template #icon>
+        <nuxt-icon v-if="menu.icon" class="text-[18px]" :name="menu.icon" />
+      </template>
       <span class="menu-title pl-2">
         {{ menu.title }}
       </span>
-    </ElMenuItem>
+    </AMenuItem>
   </template>
 
   <template v-else>
-    <ElSubMenu :index="menu.key">
+    <ASubMenu :key="menu.key">
+      <template #icon>
+        <nuxt-icon v-if="menu.icon" class="text-[18px]" :name="menu.icon" />
+      </template>
       <template #title>
-        <div>
-          <nuxt-icon v-if="menu.icon" class="text-[20px]" :name="menu.icon" />
-        </div>
         <span class="submenu-title pl-2">
           {{ menu.title }}
         </span>
@@ -25,7 +25,7 @@
         :key="child.key"
         :menu="child"
       />
-    </ElSubMenu>
+    </ASubMenu>
   </template>
 </template>
 

@@ -110,6 +110,6 @@
     "**/*.scss",
     "**/*.sass",
     "**/*.less",
-    "node_modules/element-plus/theme-chalk/el-var.css"
+    "node_modules/@arco-design/web-vue/dist/arco.css"
   ]
 }

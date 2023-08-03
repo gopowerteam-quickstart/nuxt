@@ -7,3 +7,33 @@ html,body{
 div{
   outline: none;
 }
+
+.arco-layout-sider-collapsed {
+  .arco-menu-has-icon {
+    display: flex;
+    justify-content: center;
+    padding-right: 12px!important;
+  }
+  .arco-menu-icon {
+    margin-right: 0 !important;
+  }
+  .arco-menu-title {
+    width: 0 !important;
+  }
+
+  .arco-menu-collapse-button{
+    left:12px;
+    right:12px;
+    width:unset!important;
+    max-width: 50px;
+  }
+}
+
+.arco-dropdown-option{
+  justify-content: center;
+}
+
+// .arco-menu-icon{
+//   display: flex;
+//   justify-content: center;
+// }

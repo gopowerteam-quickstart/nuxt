@@ -10,7 +10,6 @@
     "update:request": "npx request-generate"
   },
   "devDependencies": {
-    "@element-plus/nuxt": "^1.0.5",
     "@gopowerteam/eslint-config": "^0.0.7",
     "@gopowerteam/request-generate": "^0.1.18",
     "@iconify-json/icon-park-outline": "^1.1.11",
@@ -21,14 +20,17 @@
     "@unocss/preset-icons": "^0.53.6",
     "@unocss/reset": "^0.53.6",
     "dayjs-nuxt": "^1.1.2",
-    "element-plus": "^2.3.8",
     "eslint": "^8.45.0",
+    "less": "^4.1.3",
     "nuxt": "^3.6.5",
     "nuxt-icons": "^3.2.1",
     "nuxt-viewport": "^2.0.6",
-    "sass": "^1.64.1"
+    "sass": "^1.64.1",
+    "unplugin-auto-import": "^0.16.6",
+    "unplugin-vue-components": "^0.25.1"
   },
   "dependencies": {
+    "@arco-design/web-vue": "^2.49.2",
     "@pinia-plugin-persistedstate/nuxt": "^1.1.1",
     "@pinia/nuxt": "^0.4.11",
     "@vue-macros/nuxt": "^1.3.20",

@@ -1,4 +1,7 @@
 import { fileURLToPath } from 'node:url'
+import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
+import { ArcoResolver } from 'unplugin-vue-components/resolvers'
 import Request from '@gopowerteam/request-generate/vite-plugin'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
@@ -27,6 +30,17 @@ export default defineNuxtConfig({
   },
   vite: {
     plugins: [
+      AutoImport({
+        resolvers: [ArcoResolver()],
+      }),
+      Components({
+        resolvers: [
+          ArcoResolver({
+            sideEffect: true,
+            importStyle: 'less',
+          }),
+        ],
+      }),
       Request({
         alias: '~',
         dir: 'src/http',
@@ -40,11 +54,9 @@ export default defineNuxtConfig({
     ['@vue-macros/nuxt', {}],
     ['@pinia/nuxt', {}],
     ['@pinia-plugin-persistedstate/nuxt', {}],
-    ['@element-plus/nuxt', {}],
     ['dayjs-nuxt', {}],
     ['nuxt-viewport', {}],
   ],
-  elementPlus: { importStyle: 'scss' },
   macros: {},
   pinia: {
     autoImports: [

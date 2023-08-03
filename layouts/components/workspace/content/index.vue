@@ -1,26 +1,25 @@
 <template>
   <section>
-    <ElScrollbar
-      class="absolute! inset-0"
-      :style="{ backgroundColor: workspace.content.background }"
-      :view-style="{ minHeight: '100%', display: 'flex', flexDirection: 'column' }"
+    <AScrollbar
+      outer-class="absolute! inset-0"
+      :style="{ backgroundColor: workspace.content.background, minHeight: '100%', display: 'flex', flexDirection: 'column' }"
     >
-      <ElHeader height="auto">
+      <ALayoutHeader height="auto">
         <ContentHeader />
-      </ElHeader>
-      <ElMain class="mian-container flex-auto" :style="`--el-main-padding:0 ${workspace.content.padding}px;`">
+      </ALayoutHeader>
+      <ALayoutContent class="mian-container flex-auto" :style="`padding:0 ${workspace.content.padding}px;`">
         <slot />
-      </ElMain>
-      <ElFooter height="auto">
+      </ALayoutContent>
+      <ALayoutFooter height="auto">
         <ContentFooter />
-      </ElFooter>
-    </ElScrollbar>
+      </ALayoutFooter>
+    </AScrollbar>
   </section>
 </template>
 
 <style lang="scss" scoped module>
-.host{
-  padding:0px;
+section :deep(.arco-scrollbar){
+  position: static!important;
 }
 </style>
 

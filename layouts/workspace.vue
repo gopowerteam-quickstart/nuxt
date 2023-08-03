@@ -1,36 +1,41 @@
 <template>
-  <ElContainer class="workspace">
-    <ElHeader class="relative" :height="`${appConfig.workspace.header.height}px`">
+  <ALayout class="workspace">
+    <ALayoutHeader class="relative z-20" :style="{ height: `${appConfig.workspace.header.height}px` }">
       <Header />
-    </ElHeader>
-    <ElContainer id="layout-container">
+    </ALayoutHeader>
+    <ALayout id="layout-container">
       <template v-if="$viewport.match('desktop')">
-        <ElAside class="relative" :width="siderWidth">
+        <ALayoutSider
+          class="relative"
+          :collapsed="store.layout.sider.collapsed"
+          :collapsed-width="appConfig.workspace.sider.collapsedWidth"
+          :width="appConfig.workspace.sider.width"
+        >
           <Sider />
-        </ElAside>
+        </ALayoutSider>
       </template>
       <template v-else>
-        <ElDrawer
-          v-model="store.layout.drawer.collapsed"
-          :append-to-body="false"
-          direction="ttb"
-          modal
-          modal-class="menu-drawer"
-          :with-header="false"
+        <ADrawer
+          v-model:visible="store.layout.drawer.collapsed"
+          class="menu-drawer"
+          :footer="false"
+          :header="false"
+          placement="top"
+          :render-to-body="false"
         >
-          <ElAside :width="siderWidth">
+          <ALayoutSider class="absolute! inset-0 w-full!">
             <Sider />
-          </ElAside>
-        </ElDrawer>
+          </ALayoutSider>
+        </ADrawer>
       </template>
 
-      <ElContainer class="relative p-0!">
+      <ALayout class="relative p-0!">
         <Content>
           <slot />
         </Content>
-      </ElContainer>
-    </ElContainer>
-  </ElContainer>
+      </ALayout>
+    </ALayout>
+  </ALayout>
 </template>
 
 <style scoped>
@@ -42,11 +47,8 @@
   position: relative;
 }
 
-.workspace:deep(.el-aside){
-  transition: all 0.3s;
-}
-
 .workspace:deep(.menu-drawer){
+  z-index:10!important;
   top: v-bind(`${appConfig.workspace.header.height}px`);
 }
 </style>
@@ -58,8 +60,4 @@ import Content from './components/workspace/content/index.vue'
 
 const appConfig = useAppConfig()
 const store = useStore()
-
-const siderWidth = computed(() => store.layout.sider.collapsed
-  ? `${appConfig.workspace.sider.collapsedWidth}px`
-  : `${appConfig.workspace.sider.width}px`)
 </script>
