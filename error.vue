@@ -3,14 +3,14 @@
     <div class="error-message">
       {{ error.statusMessage }}
     </div>
-    <ElButton
+    <NButton
       class="min-w-[100px]"
       size="large"
       type="primary"
       @click="onHandleError"
     >
       返回
-    </ElButton>
+    </NButton>
   </div>
 </template>
 

@@ -1,27 +1,29 @@
 <template>
-  <ElContainer class="workspace">
-    <ElHeader class="relative" :height="`${appConfig.workspace.header.height}px`">
+  <NLayout class="workspace">
+    <NLayoutHeader class="relative" :style="{ height: `${appConfig.workspace.header.height}px` }">
       <Header />
-    </ElHeader>
-    <ElContainer id="layout-container">
+    </NLayoutHeader>
+    <NLayout id="layout-container" :has-sider="$viewport.match('desktop')">
       <template v-if="$viewport.match('desktop')">
-        <ElAside class="relative" :width="siderWidth">
+        <NLayoutSider
+          class="relative"
+          :collapsed-width="appConfig.workspace.sider.collapsedWidth"
+          :width="appConfig.workspace.sider.width"
+        >
           <Sider />
-        </ElAside>
+        </NLayoutSider>
       </template>
       <template v-else>
-        <ElDrawer
-          v-model="store.layout.drawer.collapsed"
-          :append-to-body="false"
-          direction="ttb"
-          modal
+        <NDrawer
+          v-model:show="store.layout.drawer.collapsed"
           modal-class="menu-drawer"
-          :with-header="false"
+          placement="top"
+          show-mask
         >
-          <ElAside :width="siderWidth">
+          <NLayoutSider :width="siderWidth">
             <Sider />
-          </ElAside>
-        </ElDrawer>
+          </NLayoutSider>
+        </NDrawer>
       </template>
 
       <ElContainer class="relative p-0!">
@@ -29,8 +31,8 @@
           <slot />
         </Content>
       </ElContainer>
-    </ElContainer>
-  </ElContainer>
+    </NLayout>
+  </NLayout>
 </template>
 
 <style scoped>
