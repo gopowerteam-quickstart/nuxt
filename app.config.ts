@@ -14,7 +14,7 @@ export default defineAppConfig({
     },
     content: {
       background: '#f5f7f9',
-      padding: 20,
+      padding: 10,
       header: {
         height: 40,
         size: 12,

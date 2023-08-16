@@ -1,12 +1,19 @@
 <template>
-  <NLayout class="workspace">
+  <NLayout :content-style="{ display: 'flex', flexDirection: 'column' }" position="absolute">
     <NLayoutHeader class="relative" :style="{ height: `${appConfig.workspace.header.height}px` }">
       <Header />
     </NLayoutHeader>
-    <NLayout id="layout-container" :has-sider="$viewport.match('desktop')">
+    <NLayout
+      id="layout-container"
+      class="flex-auto"
+      :content-style="{ display: 'flex', flexDirection: $viewport.match('desktop') ? 'row' : 'column' }"
+      :has-sider="$viewport.match('desktop')"
+    >
       <template v-if="$viewport.match('desktop')">
         <NLayoutSider
           class="relative"
+          collapse-mode="width"
+          :collapsed="store.layout.sider.collapsed"
           :collapsed-width="appConfig.workspace.sider.collapsedWidth"
           :width="appConfig.workspace.sider.width"
         >
@@ -16,23 +23,27 @@
       <template v-else>
         <NDrawer
           v-model:show="store.layout.drawer.collapsed"
-          modal-class="menu-drawer"
+          class="drawer"
+          :content-style="{ backgroundColor: 'blue' }"
           placement="top"
           show-mask
+          :style="{ backgroundColor: 'red' }"
+          to="#drawer-menu"
         >
-          <NLayoutSider :width="siderWidth">
-            <Sider />
-          </NLayoutSider>
+          <NDrawerContent>
+            <SiderMenu />
+          </NDrawerContent>
         </NDrawer>
       </template>
 
-      <ElContainer class="relative p-0!">
+      <NLayout class="relative" :content-style="{ position: 'absolute', inset: 0, minHeight: '100%', display: 'flex', flexDirection: 'column' }" :native-scrollbar="false">
         <Content>
           <slot />
         </Content>
-      </ElContainer>
+      </NLayout>
     </NLayout>
   </NLayout>
+  <div id="drawer-menu" />
 </template>
 
 <style scoped>
@@ -44,11 +55,11 @@
   position: relative;
 }
 
-.workspace:deep(.el-aside){
-  transition: all 0.3s;
+.workspace:deep(.menu-drawer){
+  top: v-bind(`${appConfig.workspace.header.height}px`);
 }
 
-.workspace:deep(.menu-drawer){
+#drawer-menu:deep(.n-drawer-container){
   top: v-bind(`${appConfig.workspace.header.height}px`);
 }
 </style>
@@ -57,11 +68,8 @@
 import Header from './components/workspace/header/index.vue'
 import Sider from './components/workspace/sider/index.vue'
 import Content from './components/workspace/content/index.vue'
+import SiderMenu from './components/workspace/sider/sider-menu.vue'
 
 const appConfig = useAppConfig()
 const store = useStore()
-
-const siderWidth = computed(() => store.layout.sider.collapsed
-  ? `${appConfig.workspace.sider.collapsedWidth}px`
-  : `${appConfig.workspace.sider.width}px`)
 </script>

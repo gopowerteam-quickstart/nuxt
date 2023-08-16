@@ -1,6 +1,8 @@
 <template>
   <section class="absolute inset-0 flex flex-col select-none">
-    <SideMenu class="flex-auto relative" />
+    <div class="flex-auto relative">
+      <SideMenu />
+    </div>
     <SideActions />
   </section>
 </template>

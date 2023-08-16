@@ -1,7 +1,7 @@
 declare module '#app' {
   interface PageMeta {
     breadcrumb?: boolean,
-    menu?: MenuConfig
+    menu?: RouteMenu
     requireAuth?: boolean
     requireRoles?: string[]
   }

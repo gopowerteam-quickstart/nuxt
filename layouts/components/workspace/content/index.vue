@@ -1,21 +1,21 @@
 <template>
-  <section>
-    <ElScrollbar
+  <!-- <NScrollbar
       class="absolute! inset-0"
       :style="{ backgroundColor: workspace.content.background }"
       :view-style="{ minHeight: '100%', display: 'flex', flexDirection: 'column' }"
-    >
-      <ElHeader height="auto">
-        <ContentHeader />
-      </ElHeader>
-      <ElMain class="mian-container flex-auto" :style="`--el-main-padding:0 ${workspace.content.padding}px;`">
-        <slot />
-      </ElMain>
-      <ElFooter height="auto">
-        <ContentFooter />
-      </ElFooter>
-    </ElScrollbar>
-  </section>
+    > -->
+  <NLayoutHeader height="auto">
+    <ContentHeader />
+  </NLayoutHeader>
+  <NLayoutContent class="mian-container flex-auto">
+    <div :style="`padding: ${workspace.content.padding}px;`">
+      <slot />
+    </div>
+  </NLayoutContent>
+  <NLayoutFooter height="auto">
+    <ContentFooter />
+  </NLayoutFooter>
+  <!-- </NScrollbar> -->
 </template>
 
 <style lang="scss" scoped module>
@@ -25,6 +25,7 @@
 </style>
 
 <script setup lang="ts">
+import { NLayoutContent } from 'naive-ui'
 import ContentHeader from './content-header.vue'
 import ContentFooter from './content-footer.vue'
 

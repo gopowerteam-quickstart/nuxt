@@ -40,11 +40,15 @@ export default defineNuxtConfig({
     ['@vue-macros/nuxt', {}],
     ['@pinia/nuxt', {}],
     ['@pinia-plugin-persistedstate/nuxt', {}],
-    ['@element-plus/nuxt', {}],
     ['dayjs-nuxt', {}],
     ['nuxt-viewport', {}],
+    ['@bg-dev/nuxt-naiveui', {}],
   ],
-  elementPlus: { importStyle: 'scss' },
+  naiveui: {
+    colorModePreference: 'light',
+    iconSize: 18,
+    themeConfig: {},
+  },
   macros: {},
   pinia: {
     autoImports: [

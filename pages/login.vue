@@ -10,44 +10,53 @@
           </div>
           <div class="text-sm flex items-center space-x-1">
             <span>没有帐号?</span>
-            <ElLink style="--el-link-font-size: 0.875rem;" type="primary">
+            <NButton
+              text
+              type="primary"
+            >
               注册一个
-            </ElLink>
+            </NButton>
           </div>
         </div>
 
         <div class="login-form">
-          <ElForm ref="loginFormRef" :model="loginModel" :rules="loginRules">
-            <ElFormItem prop="username">
-              <ElInput v-model="loginModel.username" placeholder="请输入用户名" size="large">
-                <template #prepend>
+          <NForm
+            ref="loginFormRef"
+            label-placement="left"
+            label-width="auto"
+            :model="loginModel"
+            :rules="loginRules"
+          >
+            <NFormItem prop="username">
+              <NInput v-model:value="loginModel.username" placeholder="请输入用户名" size="large">
+                <template #prefix>
                   用户名
                 </template>
-              </ElInput>
-            </ElFormItem>
-            <ElFormItem prop="password">
-              <ElInput
-                v-model="loginModel.password"
+              </NInput>
+            </NFormItem>
+            <NFormItem prop="password">
+              <NInput
+                v-model:value="loginModel.password"
                 placeholder="请输入密码"
                 size="large"
                 type="password"
               >
-                <template #prepend>
+                <template #prefix>
                   密码
                 </template>
-              </ElInput>
-            </ElFormItem>
-            <ElFormItem>
-              <ElButton
+              </NInput>
+            </NFormItem>
+            <NFormItem>
+              <NButton
                 class="w-full"
                 size="large"
                 type="primary"
                 @click="onSubmit"
               >
                 登录
-              </ElButton>
-            </ElFormItem>
-          </ElForm>
+              </NButton>
+            </NFormItem>
+          </NForm>
         </div>
       </div>
     </div>
@@ -66,10 +75,10 @@
   border-radius: 10px;
 
 }
-.login-form :deep(.el-input-group__prepend){
+.login-form :deep(.n-input__prefix){
   background-color: var(--bg-color);
   color:var(--text-color-primary);
-  min-width: 3em;
+  min-width: 4em;
   font-size: 0.8rem;
   font-weight: bolder;
 }
@@ -117,11 +126,11 @@
 </style>
 
 <script setup lang="ts">
-import type { FormInstance, FormRules } from 'element-plus'
+import type { FormInst, FormRules } from 'naive-ui'
 
 const store = useStore()
 const router = useRouter()
-const loginFormRef = $ref<FormInstance>()
+const loginFormRef = $ref<FormInst>()
 const loginModel = $ref({
   username: '',
   password: '',
@@ -157,8 +166,8 @@ const loginRules: FormRules = {
 function onSubmit() {
   if (!loginFormRef) return
 
-  loginFormRef?.validate((valid) => {
-    if (valid) {
+  loginFormRef?.validate((errors) => {
+    if (!errors) {
       store.user.updateToken(Math.random().toString(32).slice(2))
       store.user.updateUser({
         roles: ['ADMIN'],
