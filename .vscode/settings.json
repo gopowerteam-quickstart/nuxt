@@ -110,6 +110,5 @@
     "**/*.scss",
     "**/*.sass",
     "**/*.less",
-    "node_modules/element-plus/theme-chalk/el-var.css"
   ]
 }
