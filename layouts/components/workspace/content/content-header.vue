@@ -36,10 +36,10 @@ watch(() => route.path, () => {
   if (route.meta.menu) updateBreadcrumb(route.meta.menu)
 }, { immediate: true })
 
-function updateBreadcrumb(menu: MenuConfig) {
+function updateBreadcrumb(menu: RouteMenu) {
   while (menu) {
     breadcrumbs.unshift(menu.title)
-    menu = submenus.find(x => x.key === menu.parent) as MenuConfig
+    menu = submenus.find(x => x.key === menu.parent) as RouteMenu
   }
 }
 </script>

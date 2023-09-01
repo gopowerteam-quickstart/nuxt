@@ -28,6 +28,5 @@ export default defineAppConfig({
     menu: {
       mode: 'vertical',
     },
-
   },
 })

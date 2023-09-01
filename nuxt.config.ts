@@ -6,6 +6,9 @@ import Request from '@gopowerteam/request-generate/vite-plugin'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  runtimeConfig:{
+    gateway: process.env.GATEWAY
+  },
   devtools: { enabled: true },
   ssr: false,
   alias: {

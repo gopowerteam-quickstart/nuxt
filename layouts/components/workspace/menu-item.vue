@@ -33,6 +33,6 @@
 import MenuItem from './menu-item.vue'
 
 defineProps<{
-  menu: MenuConfig
+  menu: RouteMenu
 }>()
 </script>

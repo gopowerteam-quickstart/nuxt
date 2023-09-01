@@ -27,7 +27,7 @@ import submenus from '@/config/menu.config'
 const { workspace } = useAppConfig()
 const store = useStore()
 const router = useRouter()
-const roots = $ref<MenuConfig[]>([])
+const roots = $ref<RouteMenu[]>([])
 
 /**
  * 生成菜单
@@ -37,19 +37,19 @@ function generateMenus() {
     ...route.meta.menu,
     path: route.path,
     index: route.meta.menu?.index || (index + 100),
-  }) as MenuConfig)
+  }) as RouteMenu)
 
-  const menus = [...(submenus as unknown as MenuConfig[]).map((menu, index) => ({
+  const menus = [...(submenus as unknown as RouteMenu[]).map((menu, index) => ({
     ...menu,
     index: menu?.index || (index + 100),
   })), ...pages]
 
-  const sortIndex = (a: MenuConfig, b: MenuConfig) => a.index! - b.index!
+  const sortIndex = (a: RouteMenu, b: RouteMenu) => a.index! - b.index!
 
-  const generateTree = (menu: MenuConfig): MenuConfig | undefined => {
+  const generateTree = (menu: RouteMenu): RouteMenu | undefined => {
     const children = (menus.filter(m => m.parent === menu.key)
       .map(generateTree)
-      .filter(Boolean) as MenuConfig[])
+      .filter(Boolean) as RouteMenu[])
       .sort(sortIndex)
 
     if (children.length > 0) menu.children = children
