@@ -1,19 +1,18 @@
-async function toTask1(){
+async function toTask1() {
 
 }
-async function toTask2(){
+async function toTask2() {
 
 }
 
-export default defineNuxtRouteMiddleware(async (to) => {
+export default defineNuxtRouteMiddleware(async () => {
   const store = useStore()
 
-  if(store.app.ready){
-    return 
-  }
+  if (store.app.ready)
+    return
 
   await Promise.all([
     toTask1(),
-    toTask2()
+    toTask2(),
   ])
 })

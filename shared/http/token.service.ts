@@ -1,5 +1,5 @@
-import { useStore } from '@/store'
 import type { RequestPlugin, RequestSendOptions } from '@gopowerteam/request'
+import { useStore } from '@/store'
 
 export class TokenService implements RequestPlugin {
   public before(options: RequestSendOptions) {

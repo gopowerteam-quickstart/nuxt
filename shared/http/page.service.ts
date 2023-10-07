@@ -46,15 +46,15 @@ export class PageService implements RequestPlugin {
     | 'FullJump'
     | 'Total'
   )[] = [
-    'PrevJump',
-    'PrevPage',
-    'JumpNumber',
-    'NextPage',
-    'NextJump',
-    'Sizes',
-    'FullJump',
-    'Total',
-  ]
+      'PrevJump',
+      'PrevPage',
+      'JumpNumber',
+      'NextPage',
+      'NextJump',
+      'Sizes',
+      'FullJump',
+      'Total',
+    ]
 
   /**
    * 构造函数

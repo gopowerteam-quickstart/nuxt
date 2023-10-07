@@ -1,9 +1,6 @@
-import type { UserRole } from '@/config/enum.config'
-
-export default defineNuxtRouteMiddleware((to) => {
+export default defineNuxtRouteMiddleware(() => {
   const store = useStore()
 
-  if(!store.app.ready){
+  if (!store.app.ready)
     store.app.setReady()
-  }
 })

@@ -14,5 +14,4 @@ export default defineNuxtRouteMiddleware((to) => {
     && requireRoles.length > 0
     && requireRoles.every(role => !store.user.roles?.includes(role as UserRole)))
     throw showError({ statusCode: 403, statusMessage: '对不起，您没有该页面访问的权限' })
-
 })

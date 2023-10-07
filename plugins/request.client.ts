@@ -1,7 +1,7 @@
-
-import { AdapterResponse, ResponseInterceptor, setup } from '@gopowerteam/request'
+import type { AdapterResponse, ResponseInterceptor } from '@gopowerteam/request'
+import { setup } from '@gopowerteam/request'
 import { AxiosAdapter } from '@gopowerteam/request/adapters'
-import {Message} from '@arco-design/web-vue'
+import { Message } from '@arco-design/web-vue'
 import { TokenService } from '~/shared/http/token.service'
 
 class StatusInterceptors implements ResponseInterceptor {
@@ -36,9 +36,8 @@ class ExceptionInterceptors implements ResponseInterceptor {
      * @param response
      */
   onStateCode403() {
-    const router = useRouter()
-    
-    // TODO
+    // const router = useRouter()
+    // TODO: Deal For 403
   }
 
   exec(response: AdapterResponse) {
@@ -53,13 +52,11 @@ class ExceptionInterceptors implements ResponseInterceptor {
   }
 }
 
-
-
-export default defineNuxtPlugin(nuxtApp => {
-  const {gateway} = useRuntimeConfig()
+export default defineNuxtPlugin(() => {
+  const { gateway } = useRuntimeConfig()
   //   置服务端信息
   setup({
-    gateway: gateway,
+    gateway,
     adapter: new AxiosAdapter(),
     qs: {
       arrayFormat: 'repeat',
