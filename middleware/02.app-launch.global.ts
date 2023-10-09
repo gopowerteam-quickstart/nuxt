@@ -8,8 +8,9 @@ async function toTask2() {
 export default defineNuxtRouteMiddleware(async () => {
   const store = useStore()
 
-  if (store.app.ready)
+  if (store.app.ready) {
     return
+  }
 
   await Promise.all([
     toTask1(),

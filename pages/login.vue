@@ -20,7 +20,6 @@
           <AForm
             auto-label-width
             :label-col-props="{ span: 0 }"
-
             :model="loginModel"
             :rules="loginRules"
             @submit-success="onLogin"
@@ -35,6 +34,7 @@
             <AFormItem prop="password">
               <AInput
                 v-model="loginModel.password"
+                :input-attrs="{ autocomplete: true }"
                 placeholder="请输入密码"
                 size="large"
                 type="password"
@@ -67,65 +67,69 @@
 <style lang="scss" scoped>
 @use "sass:math";
 
-.login-card{
+.login-card {
   background-color: #fff;
   padding: 20px;
   border-radius: 10px;
 
 }
-.login-form :deep(.arco-input-prepend){
-  color:var(--text-color-primary);
+
+.login-form :deep(.arco-input-prepend) {
+  color: var(--text-color-primary);
   min-width: 5em;
   font-size: 0.8rem;
   font-weight: bolder;
   justify-content: flex-end;
 }
 
-.background{
+.background {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  align-items: center;
+  min-height: 100vh;
+  background-color: fff;
+  overflow: hidden;
+
+  .wave {
+    content: "";
     position: absolute;
-    inset: 0;
-    z-index: -1;
-    align-items: center;
-    min-height: 100vh;
-    background-color: fff;
-    overflow: hidden;
+    left: 50%;
+    min-width: 300vw;
+    min-height: 300vw;
+    background: linear-gradient(60deg, rgba(84, 58, 183, 1) 0%, rgba(0, 172, 193, 1) 100%);
+    animation: rotate 15s cubic-bezier(.55, .5, .45, .5) infinite;
 
-    .wave {
-        content: "";
-        position: absolute;
-        left: 50%;
-        min-width: 300vw;
-        min-height: 300vw;
-        background: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);
-        animation: rotate 15s cubic-bezier(.55,.5,.45,.5) infinite;
-
-        @for $i from 1 to 5{
-          &:nth-child(#{$i}) {
-            bottom: calc(15vh + #{$i * 5}px);
-            opacity: calc(0.9 - #{$i * 0.1});
-            animation-delay: #{-2 * $i}s;
-            border-radius: #{calc(45 - $i * 0.5) + '%'};
-          }
-        }
+    @for $i from 1 to 5 {
+      &:nth-child(#{$i}) {
+        bottom: calc(15vh + #{$i * 5}px);
+        opacity: calc(0.9 - #{$i * 0.1});
+        animation-delay: #{-2 * $i}s;
+        border-radius: #{calc(45 - $i * 0.5) + '%'};
+      }
     }
+  }
 }
 
 @keyframes rotate {
-    0% {
-        transform: translate3d(-50%, 0,0) rotateZ(0deg);
-    }
-    50% {
-        transform: translate3d(-50%, -2%,0) rotateZ(180deg);
-    }
-    100% {
-        transform: translate3d(-50%, 0%,0) rotateZ(360deg);
-    }
+  0% {
+    transform: translate3d(-50%, 0, 0) rotateZ(0deg);
+  }
+
+  50% {
+    transform: translate3d(-50%, -2%, 0) rotateZ(180deg);
+  }
+
+  100% {
+    transform: translate3d(-50%, 0%, 0) rotateZ(360deg);
+  }
 }
 </style>
 
 <script setup lang="ts">
 import type { FieldRule } from '@arco-design/web-vue'
 
+const routet = useRouter()
 const store = useStore()
 const loginModel = $ref({
   username: '',
@@ -157,9 +161,7 @@ const loginRules: Record<string, FieldRule[]> = {
 
 function onLogin() {
   store.user.updateToken(Math.random().toString(32).slice(2))
-  store.user.updateUser({
-    roles: ['ADMIN'],
-  })
-  location.replace('/')
+
+  navigateTo('/', { replace: true, open: { target: '_self' } })
 }
 </script>
