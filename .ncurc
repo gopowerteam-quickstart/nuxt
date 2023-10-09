@@ -2,7 +2,7 @@
   "upgrade": true,
   "color":true,
   "interactive": true,
-  "packageManager":"pnpm",
+  "packageManager":"bun",
   "format":"group",
   "reject": [
     "@types/node"

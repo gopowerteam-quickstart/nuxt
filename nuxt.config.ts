@@ -1,13 +1,14 @@
 import { fileURLToPath } from 'node:url'
 import Request from '@gopowerteam/request-generate/vite-plugin'
 
+const enableSSR = true
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   runtimeConfig: {
     gateway: process.env.GATEWAY,
   },
+  ssr: enableSSR,
   devtools: { enabled: true },
-  ssr: false,
   alias: {
     '~': fileURLToPath(new URL('./', import.meta.url)),
     '@': fileURLToPath(new URL('./', import.meta.url)),
@@ -54,6 +55,9 @@ export default defineNuxtConfig({
     autoImports: [
       'defineStore',
     ],
+  },
+  piniaPersistedstate: {
+    storage: enableSSR ? 'cookies' : 'localStorage',
   },
   viewport: {
     breakpoints: {

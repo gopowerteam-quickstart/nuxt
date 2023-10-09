@@ -26,8 +26,9 @@ class ExceptionInterceptors implements ResponseInterceptor {
   onStateCode400(response: AdapterResponse) {
     const { message } = response?.data || ({} as any)
 
-    if (message)
+    if (message) {
       Message.error(message)
+    }
   }
 
   /**
