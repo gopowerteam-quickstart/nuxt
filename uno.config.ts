@@ -3,13 +3,23 @@ import transformerDirective from '@unocss/transformer-directives'
 import presetIcons from '@unocss/preset-icons'
 import presetAttributify from '@unocss/preset-attributify'
 import { breakpoints } from './package.json'
-
+import { FileSystemIconLoader } from '@iconify/utils/lib/loader/node-loaders'
 
 function defineBreakpoints() {
   return Object.entries(breakpoints).reduce<Record<string, string>>((result, [key, value]) => {
     result[key] = `${value}px`
     return result
   }, {})
+}
+
+function defineSVGloader() {
+  return FileSystemIconLoader(
+    './assets/svg', svg => svg
+  )
+}
+
+function defineIconifyLoader(name: string) {
+  return () => import(`@iconify-json/${name}`).then(i => i.icons)
 }
 
 export default defineConfig({
@@ -23,7 +33,8 @@ export default defineConfig({
     presetIcons({
       prefix: 'icon-',
       collections: {
-        'park-outline': () => import('@iconify-json/icon-park-outline').then(i => i.icons),
+        'park-outline': defineIconifyLoader('icon-park-outline'),
+        'svg': defineSVGloader()
       },
       extraProperties: {
         'display': 'inline-block',

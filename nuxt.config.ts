@@ -7,10 +7,6 @@ import {breakpoints} from './package.json'
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   runtimeConfig,
-  alias: {
-    '~': fileURLToPath(new URL('./', import.meta.url)),
-    '@': fileURLToPath(new URL('./', import.meta.url)),
-  },
   devtools: {
     enabled: true
   },
@@ -28,7 +24,6 @@ export default defineNuxtConfig({
       'components/*/index.ts',
       'components/**',
       'composables',
-      'composables/*/index.ts',
       'composables/**',
       'store',
       'server/utils/**',

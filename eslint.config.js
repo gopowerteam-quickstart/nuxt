@@ -9,6 +9,11 @@ export default antfu({
     globals: {
       $ref: 'readonly',
       useDayjs: 'readonly',
+      useAppStore: 'readonly',
     },
+  },
+}, {
+  rules: {
+    'no-undef': ['off'],
   },
 })
